@@ -1,8 +1,17 @@
 from __future__ import print_function, division
 
-import grpc, fractions
+import grpc
 import cblocks_pb2
 import cblocks_pb2_grpc
+try:
+    import sage.all as sage
+    def Fraction(x,y):
+        try:
+            return sage.Rational((x, y))
+        except TypeError:
+            return x/y
+except ImportError:
+    from fractions import Fraction
 
 class CBClient(object):
     def __init__(self, host='localhost', port='50051'):
@@ -48,7 +57,7 @@ class CBClient(object):
     def _process_rat_reply(self, reply):
         numerator = self._process_int_reply(reply.numerator)
         denominator = self._process_int_reply(reply.denominator)
-        return fractions.Fraction(numerator, denominator)
+        return Fraction(numerator, denominator)
 
     def _process_int_reply(self, reply):
         if not reply.big_result:
