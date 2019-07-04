@@ -1,7 +1,7 @@
 from __future__ import division
-import conformal_blocks.cbbundle as cbd
+import cbbundle as cbd
 import cProfile, time, random, subprocess
-import cbclient.cbclient as cbc
+import cbclient as cbc
 
 def experiment():
     """

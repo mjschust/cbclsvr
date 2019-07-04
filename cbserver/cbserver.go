@@ -5,8 +5,8 @@ import (
 	"math/big"
 	"net"
 
-	pb "github.com/mjschust/cbclsvr/cbservice"
-	"github.com/mjschust/cblocks/bundle"
+	pb "github.com/mjschust/cbclsvr/cbserver/cbservice"
+	"github.com/mjschust/cblocks"
 	"github.com/mjschust/cblocks/lie"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
@@ -40,7 +40,7 @@ func (s *server) SymComputeDivisor(ctx context.Context, cbr *pb.SymConformalBloc
 	return constructVectorReply(rslt), nil
 }
 
-func constructCBBundle(cbr *pb.ConformalBlocksRequest) bundle.CBBundle {
+func constructCBBundle(cbr *pb.ConformalBlocksRequest) cblocks.CBBundle {
 	rank := int(cbr.Algebra.Rank)
 	level := int(cbr.Level)
 	wts := make([]lie.Weight, len(cbr.Weights))
@@ -53,10 +53,10 @@ func constructCBBundle(cbr *pb.ConformalBlocksRequest) bundle.CBBundle {
 	}
 
 	alg := lie.NewAlgebra(lie.NewTypeARootSystem(rank))
-	return bundle.NewCBBundle(alg, wts, level)
+	return cblocks.NewCBBundle(alg, wts, level)
 }
 
-func processSymCBRequest(cbr *pb.SymConformalBlocksRequest) bundle.SymCBBundle {
+func processSymCBRequest(cbr *pb.SymConformalBlocksRequest) cblocks.SymCBBundle {
 	rank := int(cbr.Algebra.Rank)
 	level := int(cbr.Level)
 	n := int(cbr.NumPoints)
@@ -66,7 +66,7 @@ func processSymCBRequest(cbr *pb.SymConformalBlocksRequest) bundle.SymCBBundle {
 	}
 
 	alg := lie.NewAlgebra(lie.NewTypeARootSystem(rank))
-	return bundle.NewSymmetricCBBundle(alg, wt, level, n)
+	return cblocks.NewSymmetricCBBundle(alg, wt, level, n)
 }
 
 func constructVectorReply(rslt []*big.Rat) *pb.VectorReply {

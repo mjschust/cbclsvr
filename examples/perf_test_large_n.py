@@ -1,6 +1,6 @@
 from __future__ import division
-import conformal_blocks.cbbundle as cbd
-import cbclient.cbclient as cbc
+import cbbundle as cbd
+import cbclient as cbc
 
 def experiment():
     rank = 5

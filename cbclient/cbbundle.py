@@ -1,6 +1,6 @@
 from __future__ import division
 import math, fractions, itertools, functools
-from conformal_blocks.lie import SimpleLieAlgebra, TypeALieAlgebra, TypeBLieAlgebra, TypeCLieAlgebra, TypeDLieAlgebra, _Root
+from lie import SimpleLieAlgebra, TypeALieAlgebra, TypeBLieAlgebra, TypeCLieAlgebra, TypeDLieAlgebra, _Root
 try:
     import sage.all as sage
     def Fraction(x,y):
