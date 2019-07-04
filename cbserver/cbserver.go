@@ -4,11 +4,11 @@ import (
 	"log"
 	"math/big"
 	"net"
+  "context"
 
 	pb "github.com/mjschust/cbclsvr/cbserver/cbservice"
 	"github.com/mjschust/cblocks"
 	"github.com/mjschust/cblocks/lie"
-	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )
