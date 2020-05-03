@@ -8,7 +8,7 @@ import (
 
 	pb "github.com/mjschust/cbclsvr/cbserver/cbservice"
 	"github.com/mjschust/cblocks"
-	"github.com/mjschust/cblocks/lie"
+	"github.com/mjschust/lieprod/lie"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )
